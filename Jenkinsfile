@@ -3,15 +3,10 @@ pipeline {
     triggers {
         pollSCM('H/5 * * * *')
     }
-    environment {
-        DOCKER_CREDENTIALS_ID = 'docker-credentials-id'
-        DOCKER_REGISTRY = 'https://registry.hub.docker.com'
-        DOCKER_IMAGE = 'eline2016/examen-devops'
-    }
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/imenH-cloud/examen-devops.git'
+                git 'https://github.com/imenH-cloud/examen-devops.git', branch: 'main'
             }
         }
         stage('Build') {
@@ -22,24 +17,19 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    app = docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
+                    app = docker.build("eline2016/examen-devops:${env.BUILD_ID}")
                 }
             }
         }
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry("${DOCKER_REGISTRY}", "${DOCKER_CREDENTIALS_ID}") {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials-id') {
                         app.push("${env.BUILD_ID}")
                         app.push("latest")
                     }
                 }
             }
-        }
-    }
-    post {
-        always {
-            cleanWs()
         }
     }
 }
