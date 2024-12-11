@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <h1>Examen Pratique TI1</h1>
+      </div>
+      <div class="sidebar">
+        <h2>Side</h2>
+        <a href="#">Accueil</a><br />
+        <a href="#">Contact</a>
+      </div>
+      <div class="contenu">
+        <p>Welcome to my page!</p>
+        <img src="img/cat.gif" width="250px" height="250px" alt="cat" />
+        <br /><br />
+        <ul>
+          <li>Math</li>
+          <li>Dev Web</li>
+          <li>Prog</li>
+        </ul>
+      </div>
+      <div class="myForm">
+        <h2>Info Etudiant</h2>
+        <hr />
+        <form action="#">
+          <label for="name">Nom Etudiant:</label>
+          <input class="form-control" type="text" name="name" id="name" /><br />
+          <input class="btn btn-success" type="submit" value="Ajouter" />
+        </form>
+      </div>
+      <div class="footer">
+        <p>Copyright 2024 - Tout droits réservés</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--
+Soit le corps d'une page HTML 'index.html' suivant:
+
+<div class="container">
+    <div class="menu">
+    </div>
+    <div class="sidebar">
+    </div>
+    <div class="contenu">
+    </div>
+    <div class="myForm">
+    </div>
+    <div class="footer">
+    </div>
+</div>
+
+
+Reproduisez l'aperçu ci-dessous en utilisant uniquement HTML5 et CSS3. Respectez la mise en page, les styles, et les éléments donnés.
+
+Intégrer la bibliothèque CSS Bootstrap 5
+
+
+Créez les fichiers 'index.html' et 'style.css' et implémentez le code HTML et le CSS ci-dessous :
+
+Ajouter une couleur de fond blanc pour le bloc container
+
+Ajoutez les styles suivants pour le corps de la page:
+    couleur de fond = #f9f9f9;
+    couleur de texte = #333333;
+    font-family = Arial
+    padding = 1rem;
+
+Dans le bloc div class="menu":
+  - ajoutez un titre niveau 1 "Examen Pratique TI1" 
+  - appliquez les styles :
+      - couleur de fond (#333333)
+      - couleur de texte (#f9f9f9)
+      - alignement centré
+      - padding = 1rem
+      - bordure arrondie = 0.5rem
+      - hauteur ligne de texte = 1.7
+  
+Dans le bloc div class="sidebar", ajoutez:
+  - un titre niveau 2 "Side"
+  - 2 liens hypertextes "Accueil" et "Contact"
+  - appliquez les styles :
+      - couleur de fond (#a9c9e9)
+      - couleur texte (#030393)
+      - padding = 1rem
+      - bordure arrondie = 0.5rem      
+      - couleur lien hypertexte (#030393)
+      - taille lien hypertexte = 1.25rem
+      - taille ligne lien hypertexte = 1.5
+      - couleur hover (#870087)
+
+Dans le bloc class="contenu", ajouter:
+  - un paragraphe contenant "Welcome to my page!" et un effet padding = 1rem
+  - insérer une image quelconque ayant comme taille 250px x 250px
+  - une liste ordonnée chiffre romain (Math, Dev Web, Prog)
+
+
+Dans le bloc class="myForm", ajouter :
+  - une titre 2 'Info Etudiant'
+  - une ligne horizontale
+  - un formulaire ayant une zone texte 'Nom Etudiant' et un bouton 'Ajouter'.
+  - un padding = 1rem, bordure arrondie = 0.5rem et une couleur de fond = #c7efcf
+
+Dans le bloc div class="footer", ajoutez:
+  - un paragraphe contenant le texte 'Copyright 2024 - Tout droits réservés'
+  - une couleur de fond = #eeee88, un padding = 1rem, bordure arrondie = 0.5rem
+
+Modifiez la mise en page du bloc 'container' pour organiser son contenu (menu, sidebar, contenu, myForm et footer) en utilisant CSS Grid:
+  - utiliser une grille 3 ligne x 3 colonne
+
+Ajoutez un comportement responsive au bloc 'menu' en utilisant un sélecteur @media :
+  - Si la largeur de l'écran est supérieure à 768px, appliquez les styles suivants :
+        couleur arrière plan: #333399
+  - Si la largeur de l'écran est supérieure à 1024px, appliquez les styles :
+        couleur arrière plan: #993388
+
+Intégrer la bibliothèque Bootstrap 5 et appliquer les effets:
+  - bouton primary 'btn btn-primary' au bouton 'Ajouter' du formulaire
+  - effet 'form-control' à la zone de texte
+---
+
+Annexe
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas: 
+        "header header header"
+        "sidebar content form"
+        "footer footer footer";
+    
+    grid-area: NOM_ZONE;
+
+    @media (width >= 800px) {
+
+    }    
+-->

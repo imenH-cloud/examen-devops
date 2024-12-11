@@ -1,0 +1,87 @@
+body {
+    background-color: #f9f9f9;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 1rem;
+}
+
+.container{
+    background-color: #fff;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas: 
+        "header header header"
+        "sidebar content form"
+        "footer footer footer";
+    
+}
+
+.menu {
+    grid-area: header;
+    background-color: #333333;
+    color: #f9f9f9;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    line-height: 1.7;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #a9c9e9;
+    color: #030393;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.sidebar a {
+    color: #030393;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.sidebar a:hover {
+    color: #870087;
+}
+
+.contenu {
+    grid-area: content;
+    padding: 1rem;
+
+    /* min-block-size: 100vh; */
+    min-block-size: 25rem;
+}
+
+.myForm {
+    grid-area: form;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #c7efcf;
+}
+
+.footer {
+    grid-area: footer;
+    padding: 1rem;
+    background-color: #eeee88;
+    border-radius: 0.5rem;
+}
+
+img {
+    border-radius: 1rem;
+}
+
+@media (1024px > width >= 768px) {
+    .menu {
+        background-color: #333399;
+    }
+}
+
+@media (width >= 1024px) {
+    .menu {
+        background-color: #993388;
+    }
+}
