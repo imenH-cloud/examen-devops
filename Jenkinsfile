@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials') // Remplacez par l'ID de vos credentials Docker Hub dans Jenkins
-        DOCKER_IMAGE = "eline2016/salutation"         // Remplacez par votre nom d'utilisateur Docker Hub 
+        DOCKER_IMAGE = "eline2016/examen-devops:latest"         // Remplacez par votre nom d'utilisateur Docker Hub 
     }
 
     stages {
