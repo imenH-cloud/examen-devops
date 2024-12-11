@@ -5,7 +5,7 @@ metadata:
   labels:
     app: salutation
 spec:
-  replicas: 3  # Nombre de réplicas
+  replicas: 2  # Nombre de réplicas demandé
   selector:
     matchLabels:
       app: salutation
