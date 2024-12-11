@@ -1,35 +1,60 @@
 pipeline {
     agent any
-    triggers {
-        pollSCM('H/5 * * * *')
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials') // Remplacez par l'ID de vos credentials Docker Hub dans Jenkins
+        DOCKER_IMAGE = "eline2016/salutation"         // Remplacez par votre nom d'utilisateur Docker Hub 
     }
+
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-               git url: 'https://github.com/imenH-cloud/examen-devops.git', branch: 'main'
+                echo 'Cloning repository...'
+                git branch: 'main', url: 'https://github.com/imenH-cloud/examen-devops' // Remplacez par votre repo
             }
         }
-        stage('Build') {
+
+        stage('Build Application') {
             steps {
-                sh './mvnw clean package'
+                echo 'Building the Spring Boot application...'
+                sh './mvnw clean package -DskipTests'
             }
         }
+
         stage('Build Docker Image') {
             steps {
-                script {
-                    app = docker.build("eline2016/examen-devops:${env.BUILD_ID}")
+                echo 'Building Docker image...'
+                sh 'docker build -t ${DOCKER_IMAGE} .'
+            }
+        }
+
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                echo 'Pushing Docker image to Docker Hub...'
+                withDockerRegistry([credentialsId: 'dockerhub-credentials', url: '']) {
+                    sh 'docker push ${DOCKER_IMAGE}'
                 }
             }
         }
-        stage('Push Docker Image') {
+
+        stage('Clean Workspace') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials-id') {
-                        app.push("${env.BUILD_ID}")
-                        app.push("latest")
-                    }
-                }
+                echo 'Cleaning up workspace...'
+                cleanWs()
             }
+        }
+    }
+
+    triggers {
+        pollSCM('H/5 * * * *') // Vérifie les changements dans le dépôt toutes les 5 minutes
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check the logs for more details.'
         }
     }
 }
