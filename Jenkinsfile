@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 echo 'Cloning repository...'
-                git branch: 'main', url: 'https://github.com/imenH-cloud/examen-devops' // Remplacez par votre repo
+                git branch: 'master', url: 'https://github.com/imenH-cloud/examen-devops' // Remplacez par votre repo
             }
         }
 
