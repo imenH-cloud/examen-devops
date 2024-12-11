@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: salutation-service
+spec:
+  type: ClusterIP  # Type de service
+  selector:
+    app: salutation  # Doit correspondre aux labels du déploiement
+  ports:
+  - port: 80  # Port du service
+    targetPort: 80  # Port du conteneur
