@@ -14,9 +14,9 @@ resource "docker_image" "examen-devops" {
   keep_locally = false
 }
 
-resource "docker_container" "examen-devops" {
+resource "docker_container" "salutation" {
   image = docker_image.examen-devops.name
-  name  = "examen-devops"
+  name  = "salutation"
   ports {
     internal = 8888
     external = 9999
