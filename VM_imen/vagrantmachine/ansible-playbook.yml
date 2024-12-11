@@ -2,41 +2,31 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Update and upgrade the system
+    - name: Update and upgrade apt packages
       apt:
         update_cache: yes
-        upgrade: yes
-
-    - name: Install dependencies
-      apt:
-        name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gnupg
-          - lsb-release
-        state: present
-
-    - name: Add Docker GPG key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-
-    - name: Add Docker APT repository
-      apt_repository:
-        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
-        state: present
-
-    - name: Update APT package cache
-      apt:
-        update_cache: yes
+        upgrade: dist
 
     - name: Install Docker
       apt:
-        name: docker-ce
+        name: docker.io
         state: present
 
-    - name: Add 'vagrant' user to the docker group
+    - name: Add vagrant user to docker group
       user:
         name: vagrant
         groups: docker
+        append: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Copy website files
+      copy:
+        src: /"C:\Users\pc\Downloads\monsite.zip"
+        dest: /var/www/html/
+
+    - name: Unzip website files
+      command: unzip /var/www/html/monsite.zip -d /var/www/html/

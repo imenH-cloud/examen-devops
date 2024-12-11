@@ -7,16 +7,16 @@ terraform {
   }
 }
 
-provider "docker" {host = "tcp://192.168.121.138:2375"}
+provider "docker" {host = "tcp://192.168.1.116:2375"}
 
-resource "docker_image" "testautomatisation" {
-  name         = "arijchetoui1eline2016/testautomatisation"
+resource "docker_image" "examen-devops" {
+  name         = "eline2016/examen-devops"
   keep_locally = false
 }
 
-resource "docker_container" "testautomatisation" {
-  image = docker_image.testautomatisation.name
-  name  = "testautomatisation"
+resource "docker_container" "salutation" {
+  image = docker_image.examen-devops.name
+  name  = "salutation"
   ports {
     internal = 8888
     external = 9999

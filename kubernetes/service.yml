@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: salutation
   labels:
-    app: my-app
+    app: salutation
 spec:
-  replicas: 2 # Nombre de réplicas
+  replicas: 3  # Nombre de réplicas
   selector:
     matchLabels:
       app: salutation
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: salutation
-        image: examen-devops # Remplacez par votre image Docker
+        image: examen-devops:latest  # Remplacez par votre image Docker
         ports:
         - containerPort: 80  # Port exposé par le conteneur
         env:
