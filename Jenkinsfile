@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/imenH-cloud/examen-devops.git', branch: 'main'
+               git url: 'https://github.com/imenH-cloud/examen-devops.git', branch: 'main'
             }
         }
         stage('Build') {
